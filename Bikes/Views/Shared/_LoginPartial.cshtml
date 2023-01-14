@@ -7,28 +7,26 @@
 <ul class="nav navbar-nav navbar-right">
     @if (SignInManager.IsSignedIn(User))
     {
-        <li class="nav-item active">
-            <a id="manage" class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserAsync(User).Result.UserName !</a>
+        <li class="dropdown">
+            <a href="#"><img src="~/lib/images/profile.png" height="30" title="profile" /><i class="bi bi-chevron-down"></i></a>
+            <ul>
+                <li><span class="dropdown-item-text" style="text-align:center">Hi @UserManager.GetUserAsync(User).Result.UserName !</span></li>
+                <li><a id="manage" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><span><img src="~/lib/images/gear.png" height="25" title="logout" /><span>    Manage Profile</span></span></a></li>
+                @if (User.IsInRole(Roles.Admin))
+                {
+                    <li><a asp-area="Identity" asp-page="/Account/Register"><span><img src="~/lib/images/add.png" height="25" title="logout" /><span>    Add Exec</span></span></a></li>
+                    <!--uncomment to add manage users feature-->
+                    <!--<li><a asp-controller="User" asp-action="Index">Manager Users</a></li>-->
+                }
+                <li><a id="logout" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })"><span><img src="~/lib/images/shutdown.png" height="25" title="logout" /><span>    Logout</span></span></a></li>
+            </ul>
         </li>
 
-        @if (User.IsInRole(Roles.Admin))
-        {
-            <li class="nav-item active">
-                <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">Add User</a>
-            </li>
-
-        }
-        <li class="nav-item active">
-            <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button id="logout" type="submit" class="nav-link btn btn-link">Logout</button>
-            </form>
-        </li>
     }
     else
     {
         <li class="nav-item active">
-            <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            <a class="getstarted scrollto" asp-area="Identity" asp-page="/Account/Login">Login</a>
         </li>
- 
     }
 </ul>

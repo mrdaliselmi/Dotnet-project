@@ -27,8 +27,6 @@
     <Content Remove="wwwroot\lib\images\portfolio\portfolio-9.jpg" />
     <Content Remove="wwwroot\lib\images\team\team-1.jpg" />
     <Content Remove="wwwroot\lib\images\team\team-2.jpg" />
-    <Content Remove="wwwroot\lib\images\team\team-3.jpg" />
-    <Content Remove="wwwroot\lib\images\team\team-4.jpg" />
     <Content Remove="wwwroot\lib\vendor\aos\aos.css" />
     <Content Remove="wwwroot\lib\vendor\aos\aos.js" />
     <Content Remove="wwwroot\lib\vendor\bootstrap-icons\bootstrap-icons.css" />
@@ -139,8 +137,6 @@
     <None Include="wwwroot\lib\images\portfolio\portfolio-9.jpg" />
     <None Include="wwwroot\lib\images\team\team-1.jpg" />
     <None Include="wwwroot\lib\images\team\team-2.jpg" />
-    <None Include="wwwroot\lib\images\team\team-3.jpg" />
-    <None Include="wwwroot\lib\images\team\team-4.jpg" />
     <None Include="wwwroot\js\main.js" />
     <None Include="wwwroot\lib\vendor\aos\aos.css" />
     <None Include="wwwroot\lib\vendor\aos\aos.js" />
