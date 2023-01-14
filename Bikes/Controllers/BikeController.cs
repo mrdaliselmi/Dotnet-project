@@ -5,12 +5,16 @@ using Bikes.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.IO;
+using Microsoft.AspNetCore.Hosting.Internal;
 
 namespace Bikes.Controllers
 {
     public class BikeController : Controller
     {
         private readonly VroomDbContext vroomDbContext;
+        private readonly HostingEnvironment _hostingEnvironment;
+
 
         [BindProperty]
         public BikeViewModel BikeVM { get; set; }
@@ -23,6 +27,7 @@ namespace Bikes.Controllers
                 Models = vroomDbContext.Models.ToList(),
                 Bike = new Models.Bike(),
             };
+            //this._hostingEnvironment = he;
 
         }
 
@@ -46,6 +51,11 @@ namespace Bikes.Controllers
             //{
             vroomDbContext.Add(this.BikeVM.Bike);
             vroomDbContext.SaveChanges();
+            var BikeId = BikeVM.Bike.Id;
+            //string wwrootPath = _hostingEnvironment.WebRootPath;
+
+
+
             return RedirectToAction(nameof(Index));
             //}
             //return View(modelVm);

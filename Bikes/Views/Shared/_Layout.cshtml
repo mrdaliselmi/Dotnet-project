@@ -1,9 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@using Bikes.Helpers
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="../wwwroot/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="../wwwroot/favicon.ico" type="image/x-icon" />
     <link rel="icon" href="../wwwroot/favicon.ico" type="image/x-icon" />
     <title>@ViewData["Title"] - Bikes</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -20,7 +24,7 @@
     <link rel="stylesheet" href="~/Bikes.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header id="header" class="fixed-top ">
+    <header id="header" class="fixed-top " style="background-color:#37517e">
         <div class="container d-flex align-items-center">
 
             <a asp-controller="Home" asp-action="Index" class="logo me-auto"><img src="~/lib/images/logo.png" alt="motozoom" class="img-fluid"></a>
@@ -34,10 +38,19 @@
                     <li><a class="nav-link scrollto" href="@Url.Action("Index", "Home")#portfolio">Gallery</a></li>
                     <li><a class="nav-link scrollto" href="@Url.Action("Index", "Home")#team">Team</a></li>
                     <li><a class="nav-link scrollto" href="@Url.Action("Index", "Home")#contact">Contact</a></li>
-                    <li><a class="nav-link scrollto" asp-controller="Make" asp-action="Index">Makes</a></li>
-                    <li><a class="nav-link scrollto" asp-controller="Model" asp-action="Index">Models</a></li>
-                    <li><a class="nav-link scrollto" asp-controller="Bike" asp-action="Index">Bikes</a></li>
-
+@*                    <li><a class="nav-link scrollto" href="@Url.Action("Index", "Bike")">Bikes</a></li>
+*@
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li class="dropdown">
+                            <a href="#"><span>Masters</span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a asp-controller="Make" asp-action="Index">Makes</a></li>
+                                <li><a asp-controller="Model" asp-action="Index">Models</a></li>
+                            </ul>
+                        </li>
+                    }
+                    
                 </ul>
                 <partial name="_LoginPartial" />
                 <i class="bi bi-list mobile-nav-toggle"></i>
@@ -45,31 +58,12 @@
 
         </div>
     </header><!-- End Header -->
-    <!-- ======= Hero Section ======= -->
-    <section id="hero" class="d-flex align-items-center">
-
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-                    <h1>Ride into the future with us</h1>
-                    <h2>MotoZoom the premier destination for motorcycle enthusiasts</h2>
-                    <div class="d-flex justify-content-center justify-content-lg-start">
-                        <a class="btn-get-started scrollto" asp-controller="Model" asp-action="Index">Explore</a>
-                    </div>
-                </div>
-                <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="~/lib/images/hero-img.png" class="img-fluid animated" alt="">
-                </div>
-            </div>
-        </div>
-
-    </section><!-- End Hero -->
-    <div>
+    <div style="margin-top:6%">
         @RenderBody()
         <hr />
         <!-- ======= Footer ======= -->
     </div>
-    <footer id="footer">
+    <footer id="footer" style="bottom:0;width:100%">
         <div class="container footer-bottom clearfix">
             <div class="copyright">
                 &copy; Copyright <strong><span>MotoZoom</span></strong>. All Rights Reserved

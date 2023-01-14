@@ -6,7 +6,7 @@
 
 <br />
 <h2 style='color : steelblue'>Add Bike</h2>
-<form method="post" action="Create">
+<form method="post" enctype="multipart/form-data" action="Create">
     <Input type="hidden" asp-for="Makes" />
 
     <div class="row mt-4">
@@ -16,6 +16,12 @@
         <div class="col-4">
             <select class="form-select" asp-for="Bike.MakeId" asp-items="Model.Makes.ToSelectListItem()">
             </select>
+        </div>
+        <div class="col-2">
+            <h5 class="text-end text-secondary mt-1">Image Path</h5>
+        </div>
+        <div class="col-auto">
+            <input class="form-control" type="file" name="files" />
         </div>
     </div>
 
@@ -67,7 +73,7 @@
             <h5 class="text-end text-secondary mt-1">features</h5>
         </div>
         <div class="col-4">
-            <input class="form-control" asp-for="Bike.Features" />
+            <textarea class="form-control" asp-for="Bike.Features"> </textarea>
         </div>
     </div>
 

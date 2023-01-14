@@ -1,7 +1,25 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center">
 
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+                <h1>Ride into the future with us</h1>
+                <h2>MotoZoom the premier destination for motorcycle enthusiasts</h2>
+                <div class="d-flex justify-content-center justify-content-lg-start">
+                    <a class="btn-get-started scrollto" asp-controller="Model" asp-action="Index">Explore</a>
+                </div>
+            </div>
+            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+                <img src="~/lib/images/hero-img.png" class="img-fluid animated" alt="">
+            </div>
+        </div>
+    </div>
+
+</section><!-- End Hero -->
 <main id="main">
 
     <!-- ======= About Us Section ======= -->
@@ -88,7 +106,7 @@
             <div class="row" style="text-align:center">
                 <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
                     <div class="icon-box">
-                        <div class="icon"><img src="~/lib/images/front-end.png" height="40 rem"/></div>
+                        <div class="icon"><img src="~/lib/images/front-end.png" height="40 rem" /></div>
                         <h4><a href="">Great User Experience</a></h4>
                         <p>We believe that a great user experience is essential for our customers. That's why we've designed our website to be user-friendly, easy to navigate, and intuitive.</p>
                     </div>
@@ -96,7 +114,7 @@
 
                 <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
                     <div class="icon-box">
-                        <div class="icon"><img src="~/lib/images/point.png" height="40 rem"/></div>
+                        <div class="icon"><img src="~/lib/images/point.png" height="40 rem" /></div>
                         <h4><a href="">Top Tier Quality</a></h4>
                         <p>We are committed to providing our customers with the highest quality motorcycles. We carefully select and vet all of the motorcycles we sell to ensure that they meet our high standards for condition and performance.</p>
                     </div>
