@@ -1,4 +1,5 @@
 ﻿@model Bikes.Models.ViewModels.ModelViewModel
+@using Bikes.Extensions
 @{
     ViewData["Title"] = "Create";
 }
@@ -12,7 +13,7 @@
             <h5 class="text-end text-secondary mt-1">Makes</h5>
         </div>
         <div class="col-4">
-            <select class="form-select" asp-for="Model.MakeFK" asp-items="Model.CSelectListITem(Model.Makes)" >
+            <select class="form-select" asp-for="Model.MakeFK" asp-items="Model.Makes.ToSelectListItem()" >
             </select>
         </div>
     </div>

@@ -1,9 +1,12 @@
 ﻿using Bikes.AppDbContext;
+using Bikes.Helpers;
 using Bikes.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bikes.Controllers
 {
+    [Authorize(Roles = Roles.Admin + "," + Roles.Executive)]
     public class MakeController : Controller
     {
         private readonly VroomDbContext vroomDbContext;

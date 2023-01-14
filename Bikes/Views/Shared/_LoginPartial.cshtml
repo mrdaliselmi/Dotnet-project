@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Bikes.Helpers
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<ul class="nav navbar-nav navbar-right">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item active">
+            <a id="manage" class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserAsync(User).Result.UserName !</a>
+        </li>
+
+        @if (User.IsInRole(Roles.Admin))
+        {
+            <li class="nav-item active">
+                <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">Add User</a>
+            </li>
+            @*            <li class="nav-item active">
+    <p>test</p>
+    <a class="nav-link" asp-controller="User" asp-action="Index">Manager Users</a>
+    </li>*@
+        }
+        <li class="nav-item active">
+            <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button id="logout" type="submit" class="nav-link btn btn-link">Logout</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item active">
+            <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </li>
+    }
+</ul>
