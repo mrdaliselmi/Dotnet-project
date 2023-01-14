@@ -137,9 +137,6 @@
     <None Include="wwwroot\lib\images\portfolio\portfolio-8.jpg" />
     <None Include="wwwroot\lib\images\portfolio\portfolio-9.jpg" />
     <None Include="wwwroot\lib\images\team\team-2.jpg" />
-    <None Include="wwwroot\lib\images\team\team-3.jpg" />
-    <None Include="wwwroot\lib\images\team\team-4.jpg" />
-    <None Include="wwwroot\lib\images\team\team-4.jpg" />
     <None Include="wwwroot\js\main.js" />
     <None Include="wwwroot\lib\vendor\aos\aos.css" />
     <None Include="wwwroot\lib\vendor\aos\aos.js" />

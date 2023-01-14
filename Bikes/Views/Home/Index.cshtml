@@ -10,7 +10,7 @@
                 <h1>Ride into the future with us</h1>
                 <h2>MotoZoom the premier destination for motorcycle enthusiasts</h2>
                 <div class="d-flex justify-content-center justify-content-lg-start">
-                    <a class="btn-get-started scrollto" asp-controller="Model" asp-action="Index">Explore</a>
+                    <a class="btn-get-started scrollto" href="@Url.Action("Index", "Home")#about">Explore</a>
                 </div>
             </div>
             <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
@@ -265,7 +265,7 @@
 
                 <div class="col-lg-6">
                     <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="pic"><img src="~/lib/images/team/team-1.jpg" class="img-fluid" alt=""></div>
+                        <div><img src="~/lib/images/team/team-1.jpg" alt="" style="width:110px;height:120px;border-radius:30%"></div>
                         <div class="member-info">
                             <h4>Mohamed Ali Selmi</h4>
                             <span>Co-Chief Executive Officer</span>
@@ -280,9 +280,9 @@
                     </div>
                 </div>
 
-                <div class="col-lg-6 mt-4 mt-lg-0">
+                <div class="col-lg-6 mt-4 mt-lg-0" >
                     <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="pic"><img src="~/lib/images/team/team-2.jpg" class="img-fluid" alt=""></div>
+                        <div><img src="~/lib/images/team/team-2.jpg" alt="" style="width:120px;height:120px;border-radius:30%"></div>
                         <div class="member-info">
                             <h4>Nour Eddine Ben Nejma</h4>
                             <span>Co-Chief Executive Officer</span>

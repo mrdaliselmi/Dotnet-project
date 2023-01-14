@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="~/Bikes.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header id="header" class="fixed-top " style="background-color:#37517e">
+    <header id="header" class="fixed-top " style="background-color:#37517e ; height:9.5%">
         <div class="container d-flex align-items-center">
 
             <a asp-controller="Home" asp-action="Index" class="logo me-auto"><img src="~/lib/images/logo.png" alt="motozoom" class="img-fluid"></a>
@@ -33,8 +33,8 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a href="@Url.Action("Index", "Home")#">Home</a></li>
-                    <li><a class="nav-link scrollto" href="@Url.Action("Index", "Home")#about">About</a></li>
-                    <li><a class="nav-link scrollto" href="@Url.Action("Index", "Home")#services">Services</a></li>
+                    <li><a class="nav-link scrollto" href="@Url.Action("Index", "Home")#about" >About</a></li>
+                    <li><a class="nav-link scrollto" href="@Url.Action("Index", "Home")#services" >Services</a></li>
                     <li><a class="nav-link scrollto" href="@Url.Action("Index", "Home")#portfolio">Gallery</a></li>
                     <li><a class="nav-link scrollto" href="@Url.Action("Index", "Home")#team">Team</a></li>
                     <li><a class="nav-link scrollto" href="@Url.Action("Index", "Home")#contact">Contact</a></li>
@@ -58,7 +58,7 @@
 
         </div>
     </header><!-- End Header -->
-    <div style="margin-top:6%">
+    <div style="margin-top:4%">
         @RenderBody()
         <hr />
         <!-- ======= Footer ======= -->
