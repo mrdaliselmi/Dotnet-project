@@ -7,7 +7,7 @@ namespace Bikes.AppDbContext
 {
     public class VroomDbContext : IdentityDbContext<IdentityUser>
     {
-        public VroomDbContext(DbContextOptions<VroomDbContext> options):
+        public VroomDbContext(DbContextOptions<VroomDbContext> options) :
             base(options)
         {
 
@@ -15,6 +15,8 @@ namespace Bikes.AppDbContext
         public DbSet<Make> Makes { get; set; }
         public DbSet<Model> Models { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
+        public DbSet<Bike> Bikes { get; set; }
 
     }
 }
