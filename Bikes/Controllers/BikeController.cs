@@ -6,19 +6,18 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.IO;
-using Microsoft.AspNetCore.Hosting.Internal;
-
+using Microsoft.AspNetCore.Hosting;
 namespace Bikes.Controllers
 {
     public class BikeController : Controller
     {
         private readonly VroomDbContext vroomDbContext;
-        private readonly HostingEnvironment _hostingEnvironment;
+        private readonly IWebHostEnvironment _hostingEnvironment;
 
 
         [BindProperty]
         public BikeViewModel BikeVM { get; set; }
-        public BikeController(VroomDbContext vroomDbContext)
+        public BikeController(VroomDbContext vroomDbContext, IWebHostEnvironment hostingEnvironment)
         {
             this.vroomDbContext = vroomDbContext;
             BikeVM = new BikeViewModel()
@@ -27,7 +26,7 @@ namespace Bikes.Controllers
                 Models = vroomDbContext.Models.ToList(),
                 Bike = new Models.Bike(),
             };
-            //this._hostingEnvironment = he;
+            _hostingEnvironment = hostingEnvironment;
 
         }
 
@@ -52,9 +51,23 @@ namespace Bikes.Controllers
             vroomDbContext.Add(this.BikeVM.Bike);
             vroomDbContext.SaveChanges();
             var BikeId = BikeVM.Bike.Id;
-            //string wwrootPath = _hostingEnvironment.WebRootPath;
+            string wwrootPath = _hostingEnvironment.WebRootPath;
+            var files = HttpContext.Request.Form.Files;
+            var savedBike = vroomDbContext.Bikes.Find(BikeId);
+            if (files.Count != 0)
+            {
+                var ImagePath = @"images\bike\";
+                var extension = Path.GetExtension(files[0].FileName);
+                var relativeImagePath = ImagePath + BikeId + extension;
+                var absImagePath = Path.Combine(wwrootPath, relativeImagePath);
 
-
+                using (var FileStream = new FileStream(absImagePath, FileMode.Create))
+                {
+                    files[0].CopyTo(FileStream);
+                }
+                savedBike.ImagePath = relativeImagePath;
+                vroomDbContext.SaveChanges();
+            }
 
             return RedirectToAction(nameof(Index));
             //}
@@ -62,19 +75,19 @@ namespace Bikes.Controllers
         }
 
 
-        //public IActionResult Delete(int id)
-        //{
-        //    {
-        //        var bike = vroomDbContext.Bikes.Find(id);
-        //        if (bike == null)
-        //        {
-        //            return NotFound();
-        //        }
-        //        vroomDbContext.Bikes.Remove(bike);
-        //        vroomDbContext.SaveChanges();
-        //        return (RedirectToAction(nameof(Index)));
-        //    }
-        //}
+        public IActionResult Delete(int id)
+        {
+            {
+                var bike = vroomDbContext.Bikes.Find(id);
+                if (bike == null)
+                {
+                    return NotFound();
+                }
+                vroomDbContext.Bikes.Remove(bike);
+                vroomDbContext.SaveChanges();
+                return (RedirectToAction(nameof(Index)));
+            }
+        }
 
 
         //[HttpGet]

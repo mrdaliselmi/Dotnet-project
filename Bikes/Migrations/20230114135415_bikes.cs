@@ -188,7 +188,7 @@ namespace Bikes.Migrations
                         column: x => x.MakeFK,
                         principalTable: "Makes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(

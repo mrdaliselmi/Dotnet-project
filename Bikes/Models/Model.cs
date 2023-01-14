@@ -10,9 +10,9 @@ namespace Bikes.Models
         [StringLength(255)]
         public string Name { get; set; }
 
-        public Make Make{ get; set; }
+        public Make Make { get; set; }
 
-        [ForeignKey ("Make")]
+        [ForeignKey("Make")]
         public int MakeFK { get; set; }
     }
 }
