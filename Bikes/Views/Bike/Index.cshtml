@@ -1,4 +1,5 @@
 ﻿@model cloudscribe.Pagination.Models.PagedResult<Bike>
+@using Bikes.Helpers
 @{
     ViewData["Title"] = "Vroom";
     ViewData["Controller"] = "Bike";
@@ -12,15 +13,18 @@
         <div class="col-6">
             <h2 style='color : steelblue'>Bikes</h2>
         </div>
-        <div class="col-6 text-end">
-            <a class="btn btn-primary" asp-controller="Bike" asp-action="Create" style="background-color : steelblue"> <i class="fa-solid fa-motorcycle"></i> &nbsp; Add new Bike</a>
+        @if (User.IsInRole("Admin") || User.IsInRole("Executive"))
+        {
+            <div class="col-6 text-end">
+                <a class="btn btn-primary" asp-controller="Bike" asp-action="Create" style="background-color : steelblue"> <i class="fa-solid fa-motorcycle"></i> &nbsp; Add new Bike</a>
         </div>
+        }
     </div>
 <form asp-action="Index" method="get">
     <div>
         <input placeholder="Find a bike" type="text" name="searchString" value="@ViewBag.CurrentFilter"/>
-            <button asp-action="Index" class="btn btn-outline-light"><img src="~/lib/images/x.png" height="20" /></button> |
-        <button type="submit" value="Search" class="btn btn-outline-light"><img src="~/lib/images/search.png" height="20"/></button>
+        <button type="submit" value="Search" class="btn btn-outline-light"><img src="~/lib/images/search.png" height="20"/></button> |
+        <button asp-action="Index" class="btn btn-outline-light"><img src="~/lib/images/x.png" height="20" /></button>
     </div>
 </form>
     <br />
@@ -63,7 +67,10 @@
                         <b>Email : </b> @Html.DisplayFor(m=>item.SellerEmail) <br />
                         <b>Phone : </b> @Html.DisplayFor(m=>item.SellerPhone)
                     </td>
-                    <partial name="_TableButtonPartialofBikes" model="item.Id" />
+                    @if (User.IsInRole("Admin") || User.IsInRole("Executive"))
+                    {
+                        <partial name="_TableButtonPartialofBikes" model="item.Id" />
+                    }
                 </tr>
             }
         </table>

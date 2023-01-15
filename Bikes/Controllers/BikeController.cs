@@ -68,6 +68,19 @@ namespace Bikes.Controllers
             };
             return View(result);
         }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            BikeVM.Bike= vroomDbContext.Bikes.SingleOrDefault(b=> b.Id == id);
+            BikeVM.Models= vroomDbContext.Models.Where(m=>m.Make== BikeVM.Bike.Make);
+            if (BikeVM.Bike == null )
+            {
+                return NotFound();
+            }
+            return View(BikeVM);
+        }
+
         [HttpGet]
         public IActionResult Create()
         {
@@ -139,7 +152,7 @@ namespace Bikes.Controllers
         //    vroomDbContext.Update(this.BikeVM.Bike);
         //    vroomDbContext.SaveChanges();
         //    return (RedirectToAction(nameof(Index)));
-
+        //
         //}
     }
 }
