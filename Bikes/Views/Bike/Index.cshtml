@@ -1,6 +1,8 @@
-﻿@model IEnumerable<Bikes.Models.Bike>
+﻿@model cloudscribe.Pagination.Models.PagedResult<Bike>
 @{
     ViewData["Title"] = "Vroom";
+    ViewData["Controller"] = "Bike";
+    ViewData["Action"] = "Index";
 }
 
 <br />
@@ -14,6 +16,13 @@
             <a class="btn btn-primary" asp-controller="Bike" asp-action="Create" style="background-color : steelblue"> <i class="fa-solid fa-motorcycle"></i> &nbsp; Add new Bike</a>
         </div>
     </div>
+<form asp-action="Index" method="get">
+    <div>
+        <input placeholder="Find a bike" type="text" name="searchString" value="@ViewBag.CurrentFilter"/>
+            <button asp-action="Index" class="btn btn-outline-light"><img src="~/lib/images/x.png" height="20" /></button> |
+        <button type="submit" value="Search" class="btn btn-outline-light"><img src="~/lib/images/search.png" height="20"/></button>
+    </div>
+</form>
     <br />
     <div class="col-12">
         <table class="table table-striped border">
@@ -25,14 +34,19 @@
                     Bike Detail
                 </th>
                 <th>
-                    Price
+                    <a 
+                        asp-action="Index" 
+                        asp-route-sortOrder="@ViewBag.PriceSortParam"
+                        asp-route-pageNumber="@Model.PageNumber">
+                        Price
+                    </a>
                 </th>
                 <th>
                     Seller Information
                 </th>
                 <th></th>
             </tr>
-            @foreach (var item in Model)
+            @foreach (var item in Model.Data)
             {
                 <tr>
                     <td>
@@ -53,6 +67,7 @@
                 </tr>
             }
         </table>
+        <partial name="_PaginationPartial" view-data="ViewData" model="Model" />
     </div>
 
 </div>

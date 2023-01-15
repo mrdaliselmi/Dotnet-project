@@ -18,7 +18,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.Sign
     .AddDefaultUI()
     .AddDefaultTokenProviders();
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddCloudscribePagination();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

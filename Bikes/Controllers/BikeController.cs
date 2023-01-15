@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using cloudscribe.Pagination.Models;
 namespace Bikes.Controllers
 {
     public class BikeController : Controller
@@ -30,13 +31,43 @@ namespace Bikes.Controllers
 
         }
 
-        public IActionResult Index()
+
+        public IActionResult Index(String searchString, String sortOrder,int pageNumber=1, int pageSize=2)
         {
-
-            var bikes = vroomDbContext.Bikes.Include(m => m.Make).Include(m => m.Model);
-            return View(bikes);
+            ViewBag.CurrentSortOrder = sortOrder;
+            ViewBag.CurrentFilter = searchString;
+            ViewBag.PriceSortParam = String.IsNullOrEmpty(sortOrder) ? "Price_desc" : "";
+            int ExcludeRecords = (pageSize * pageNumber) - pageSize;
+            var bikes = from b in vroomDbContext.Bikes.Include(m => m.Make).Include(m => m.Model)
+                        select b;
+            var BikeCount = bikes.Count();
+            if (!String.IsNullOrEmpty(searchString) )
+            {
+                bikes = bikes.Where(b => b.Make.Name.Contains(searchString));
+                BikeCount = bikes.Count();
+            }
+            //Sorting Logic
+            switch (sortOrder)
+            {
+                case "Price_desc":
+                    bikes = bikes.OrderByDescending(b => b.Price);
+                    break;
+                default:
+                    bikes = bikes.OrderBy(b => b.Price);
+                    break;
+            }
+            bikes = bikes
+                .Skip(ExcludeRecords)
+                .Take(pageSize);
+            var result = new PagedResult<Bike>
+            {
+                Data = bikes.AsNoTracking().ToList(),
+                TotalItems = BikeCount,
+                PageNumber = pageNumber,
+                PageSize = pageSize
+            };
+            return View(result);
         }
-
         [HttpGet]
         public IActionResult Create()
         {
