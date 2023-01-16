@@ -4,7 +4,7 @@
 ![image](https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white)
 ![image](https://img.shields.io/badge/Visual_Studio-5C2D91?style=for-the-badge&logo=visual%20studio&logoColor=white)
 ## Description
-**MotoZOOM** is a bike selling website developed as an end of the semester project for a **Framework and Development university** course** by two software engineering students. The website allows users to browse and contact sellers of various types of bikes, as well as provide a platform for sellers to list their bikes for sale
+**MotoZOOM** is a bike selling website developed as an end of the semester project for a **Framework and Development university course** by two software engineering students. The website allows users to browse and contact sellers of various types of bikes, as well as provide a platform for sellers to list their bikes for sale
 The website features a user-friendly interface, a detailed search and filter system, and an admin dashboard to perform CRUD operation (Create, Retrieve, Update, Delete) and add users with executive role on the products. The website is built using **ASP.NET MVC** framework and **Entity Framework** for database management.
 ## Installation instructions
 1. **Prerequisites:** 
