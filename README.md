@@ -40,6 +40,10 @@ The website features a user-friendly interface, a detailed search and filter sys
     If you don't have the database created, please run the database script provided in the project or use the Entity framework database migration to create the database.
 ## How does it work
 
+
+https://user-images.githubusercontent.com/75693386/212744484-314cf585-87ac-4e35-aac6-7627c101d015.mp4
+
+
 ## Contributing
 We welcome contributions to the MotoZOOM project. If you are interested in contributing, please follow these guidelines:
 
