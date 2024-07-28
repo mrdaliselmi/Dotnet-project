@@ -6,6 +6,9 @@
 ## Description
 **MotoZOOM** is a bike selling website developed as an end of the semester project for a **Framework and Development university course** by two software engineering students. The website allows users to browse and contact sellers of various types of bikes, as well as provide a platform for sellers to list their bikes for sale
 The website features a user-friendly interface, a detailed search and filter system, and an admin dashboard to perform CRUD operation (Create, Retrieve, Update, Delete) and add users with executive role on the products. The website is built using **ASP.NET MVC** framework and **Entity Framework** for database management.
+
+https://user-images.githubusercontent.com/75693386/212744484-314cf585-87ac-4e35-aac6-7627c101d015.mp4
+
 ## Installation instructions
 1. **Prerequisites:** 
    
@@ -38,10 +41,7 @@ The website features a user-friendly interface, a detailed search and filter sys
 8.  **Create database:**
    
     If you don't have the database created, please run the database script provided in the project or use the Entity framework database migration to create the database.
-## How does it work
 
-
-https://user-images.githubusercontent.com/75693386/212744484-314cf585-87ac-4e35-aac6-7627c101d015.mp4
 
 
 ## Contributing
